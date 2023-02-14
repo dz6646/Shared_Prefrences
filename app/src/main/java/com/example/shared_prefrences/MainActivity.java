@@ -26,6 +26,14 @@ public class MainActivity extends AppCompatActivity {
         readShared();
     }
 
+    /**
+     * Function that saves the count and name in a shared preference file
+     *
+     * <p>Used in the exit button
+     *
+     * @author Dan Zhuravlov
+     * @param view the screen
+     */
     public void saveToFile(View view) {
         SharedPreferences.Editor editor=settings.edit();
         editor.putInt("count", count);
@@ -35,16 +43,41 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * Function that progresses the count every click
+     *
+     * <p>Used in the count button
+     *
+     * @author Dan Zhuravlov
+     * @param view the screen
+     */
     public void progCount(View view) {
         count++;
         countView.setText("" + count);
     }
 
+    /**
+     * Function that resets the button and name
+     *
+     * <p>Used in the reset button
+     *
+     * @author Dan Zhuravlov
+     * @param view the screen
+     */
     public void resetCount(View view) {
         count = 0;
+        name = "";
+        inputName.setText("");
         countView.setText("0");
     }
 
+    /**
+     * Function that loads the shared pref file into the program
+     *
+     * <p>Used in the creating of the program
+     *
+     * @author Dan Zhuravlov
+     */
     public void readShared()
     {
         count = settings.getInt("count", 0);
